@@ -2,14 +2,14 @@ from flask import Flask, render_template, request
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import config
-from extensions import db, migrate
+# from extensions import db, migrate
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{config.DB_USERNAME}:{config.DB_PASSWORD}@{config.DB_HOST}/{config.DB_DATABASE}"
+# app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{config.DB_USERNAME}:{config.DB_PASSWORD}@{config.DB_HOST}/{config.DB_DATABASE}"
 
-db.init_app(app)
-migrate.init_app(app, db)
+# db.init_app(app)
+# migrate.init_app(app, db)
 
 
 @app.route('/', methods=["GET"])
@@ -36,6 +36,8 @@ def index():
 @app.route('/', methods=["POST"])
 def create():
     data = request.get_json()
+    print(data)
+    return "success"
 
 
 if __name__ == '__main__':
